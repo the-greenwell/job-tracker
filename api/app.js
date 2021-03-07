@@ -43,6 +43,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/angular-jobs', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
