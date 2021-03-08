@@ -3,6 +3,7 @@ export class Job {
   position: string;
   status: string;
   link: string;
+  notes: string;
   starred: boolean;
   added: Date;
 }

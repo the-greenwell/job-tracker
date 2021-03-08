@@ -5,6 +5,7 @@ var JobsSchema = new mongoose.Schema({
   position: String,
   status: String,
   link: String,
+  notes: String,
   starred: { type: Boolean, default: false },
 }, { timestamps:true });
 

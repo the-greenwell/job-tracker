@@ -29,6 +29,7 @@ export class JobsDetailsComponent implements OnInit {
         position: res['position'],
         status: res['status'],
         link: res['link'],
+        notes: res['notes'],
         starred: res['starred'],
       });
     });
@@ -38,6 +39,7 @@ export class JobsDetailsComponent implements OnInit {
       position: [''],
       status: [''],
       link: [''],
+      notes: [''],
       starred: [''],
     })
   }

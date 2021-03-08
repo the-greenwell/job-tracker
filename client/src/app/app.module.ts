@@ -9,6 +9,7 @@ import { JobsComponent } from './jobs/jobs.component';
 import { JobsDetailsComponent } from './jobs-details/jobs-details.component';
 import { AddJobsComponent } from './add-jobs/add-jobs.component';
 import { EditJobsComponent } from './edit-jobs/edit-jobs.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { EditJobsComponent } from './edit-jobs/edit-jobs.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
