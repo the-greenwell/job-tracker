@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { JobsComponent } from './jobs/jobs.component';
 import { JobsDetailsComponent } from './jobs-details/jobs-details.component';
 import { AddJobsComponent } from './add-jobs/add-jobs.component';
-import { EditJobsComponent } from './edit-jobs/edit-jobs.component';
 
 const routes: Routes = [
   {
@@ -14,17 +13,12 @@ const routes: Routes = [
   {
     path: 'jobs-details/:id',
     component: JobsDetailsComponent,
-    data: { title: 'Jobs Details' }
+    data: { title: 'Edit Job Details' }
   },
   {
     path: 'add-jobs',
     component: AddJobsComponent,
-    data: { title: 'Add Jobs' }
-  },
-  {
-    path: 'edit-jobs/:id',
-    component: EditJobsComponent,
-    data: { title: 'Edit Jobs' }
+    data: { title: 'Add Job' }
   },
   { path: '',
     redirectTo: 'jobs',

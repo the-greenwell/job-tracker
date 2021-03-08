@@ -22,7 +22,6 @@ export class JobsComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.GetJobs().subscribe(res => {
       this.Jobs = res;
-      console.log(res)
     })
   }
 

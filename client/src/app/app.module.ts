@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { JobsDetailsComponent } from './jobs-details/jobs-details.component';
 import { AddJobsComponent } from './add-jobs/add-jobs.component';
-import { EditJobsComponent } from './edit-jobs/edit-jobs.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     JobsComponent,
     JobsDetailsComponent,
     AddJobsComponent,
-    EditJobsComponent
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
