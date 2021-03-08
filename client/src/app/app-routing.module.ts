@@ -27,7 +27,7 @@ const routes: Routes = [
     data: { title: 'Edit Jobs' }
   },
   { path: '',
-    redirectTo: 'add-jobs',
+    redirectTo: 'jobs',
     pathMatch: 'full'
   }
 ];

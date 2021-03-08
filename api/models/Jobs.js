@@ -6,6 +6,6 @@ var JobsSchema = new mongoose.Schema({
   status: String,
   link: String,
   starred: { type: Boolean, default: false },
-});
+}, { timestamps:true });
 
 module.exports = mongoose.model('Jobs', JobsSchema);

@@ -23,7 +23,7 @@ export class AddJobsComponent implements OnInit {
       position: [''],
       status: [''],
       link: [''],
-      starred: [''],
+      starred: [false],
     })
   }
 

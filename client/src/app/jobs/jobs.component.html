@@ -4,27 +4,31 @@
   </div>
 
   <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table text-center table-bordered">
       <thead>
         <tr>
           <th scope="col">Company</th>
           <th scope="col">Position</th>
           <th scope="col">Status</th>
-          <th scope="col">Link</th>
+          <th scope="col">Posting</th>
+          <th scope="col">Date Added</th>
+          <th scope="col">Last Updated</th>
           <th scope="col">Starred</th>
-          <th class="text-center" scope="col">Action</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let job of Jobs; let i = index">
-          <th scope="row">{{job.company}}</th>
-          <td>{{job.position}}</td>
+          <th scope="row">{{job.company | titlecase}}</th>
+          <td>{{job.position | titlecase}}</td>
           <td>{{job.status}}</td>
-          <td>{{job.link}}</td>
-          <td>{{job.starred}}</td>
-          <td class="text-center">
-            <button class="btn btn-sm btn-primary" routerLink="/jobs-details/{{job._id}}">Edit</button>
-            <button class="btn btn-sm btn-danger" (click)="delete(job._id, i)">Delete</button>
+          <td><a href='{{job.link}}'>Link</a></td>
+          <td>{{job.createdAt | date:'longDate'}}</td>
+          <td>{{job.updatedAt | date:'longDate'}}</td>
+          <td><i class="bi" [ngClass]="job.starred?'bi-star-fill star':'bi-star'"></i></td>
+          <td>
+            <a class='icon-btn gear' alt='edit' routerLink="/jobs-details/{{job._id}}"><i title='Edit' class="bi bi-gear-fill"></i></a>
+            <a class='icon-btn trash' alt='delete' (click)="delete(job._id, i)"><i title='Delete' class="bi bi-trash-fill"></i></a>
         </tr>
       </tbody>
     </table>

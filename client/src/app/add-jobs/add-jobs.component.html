@@ -1,5 +1,6 @@
 <div class="row justify-content-center mt-5">
     <div class="col-md-4">
+        <h4>Add Job</h4>
         <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label>Company Name</label>
@@ -12,8 +13,15 @@
           </div>
 
           <div class="form-group">
-            <label>Application Status</label>
-            <input class="form-control" type="text" formControlName="status" required>
+            <label for="exampleFormControlSelect1">Example select</label>
+            <select class="form-control" formControlName='status' id="exampleFormControlSelect1">
+              <option>Applied</option>
+              <option>Follow Up Sent</option>
+              <option>Interview Planned</option>
+              <option>Interviewed</option>
+              <option>Hired</option>
+              <option>Declined</option>
+            </select>
           </div>
 
           <div class="form-group">
@@ -29,7 +37,7 @@
           </div>
 
           <div class="form-group">
-            <button class="btn btn-primary btn-block" type="submit">Add Job</button>
+            <button class="btn btn-primary btn-block mt-3" type="submit">Add Job</button>
           </div>
         </form>
     </div>

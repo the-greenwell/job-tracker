@@ -14,14 +14,13 @@ export class JobsComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService.GetJobs().subscribe(res => {
-      console.log(res)
       this.Jobs = res;
+      console.log(res)
     })
   }
 
   delete(id:any, i:any) {
-    console.log(id);
-    if(window.confirm('Do you want to go ahead?')) {
+    if(window.confirm('Are you sure you want to delete this job?')) {
       this.apiService.deleteJob(id).subscribe((res) => {
         this.Jobs.splice(i, 1);
       })

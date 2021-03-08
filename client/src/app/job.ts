@@ -4,4 +4,5 @@ export class Job {
   status: string;
   link: string;
   starred: boolean;
+  added: Date;
 }
