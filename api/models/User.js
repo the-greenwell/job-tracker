@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var Jobs = require('./Jobs').schema;
 
 var UserSchema = new mongoose.Schema({
   name: {
@@ -19,6 +20,7 @@ var UserSchema = new mongoose.Schema({
     min: 6,
     max: 1024,
   },
+  jobs: [Jobs],
   date: {
     type: Date,
     default: Date.now,

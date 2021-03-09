@@ -62,8 +62,7 @@ router.post('/login', async (req, res) => {
       name: user.name,
       id: user._id,
     },
-    process.env.SECRET_TOKEN
-  );
+    process.env.SECRET_TOKEN, { expiresIn: '45m'});
 
   res.header('auth-token', token).json({
     error: null,
