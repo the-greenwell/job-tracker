@@ -7,17 +7,16 @@ const { registerValidation, loginValidation } = require('../validation');
 
 // Register User
 router.post("/register", async (req, res) => {
-  console.log(req.body, req)
   const { error } = registerValidation(req.body);
 
   if(error) {
     return res.status(400).json({error: error.details[0].message});
   }
 
-  const emailExists = await User.findOne({ email: req.body.email });
+  const usernameExists = await User.findOne({ username: req.body.username });
 
-  if (emailExists){
-    return res.status(400).json({ error: "Email already exists" });
+  if (usernameExists){
+    return res.status(400).json({ error: "Username already exists" });
   }
 
   const salt = await bcrypt.genSalt(10);
@@ -25,7 +24,7 @@ router.post("/register", async (req, res) => {
 
   const user = new User({
     name: req.body.name,
-    email: req.body.email,
+    username: req.body.username,
     password: password,
   });
 
@@ -40,15 +39,16 @@ router.post("/register", async (req, res) => {
 // Log User In
 router.post('/login', async (req, res) => {
   const { error } = loginValidation(req.body);
+  console.log(req.body)
 
   if(error) {
     return res.status(400).json({error: error.details[0].message});
   }
 
-  const user = await User.findOne({ email: req.body.email });
+  const user = await User.findOne({ username: req.body.username });
 
   if(!user) {
-    return res.status(400).json({ error: 'Email is wrong *CHANGE BEFOROE DEPLOY*'});
+    return res.status(400).json({ error: 'Username is wrong *CHANGE BEFOROE DEPLOY*'});
   }
 
   const validPassword = await bcrypt.compare(req.body.password, user.password);
@@ -63,13 +63,10 @@ router.post('/login', async (req, res) => {
       id: user._id,
     },
     process.env.SECRET_TOKEN, { expiresIn: '45m'});
-
-  res.header('auth-token', token).json({
-    error: null,
-    data: {
-      token,
-    },
-  });
+    res.json({
+      auth_token: token,
+      userId: user._id,
+    });
 
 });
 

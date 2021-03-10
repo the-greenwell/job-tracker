@@ -11,6 +11,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class AddJobsComponent implements OnInit {
 
   jobForm: FormGroup;
+  userId: any;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -18,6 +19,7 @@ export class AddJobsComponent implements OnInit {
     private ngZone: NgZone,
     private apiService: ApiService
   ) {
+    this.userId = localStorage.getItem('userId')
     this.jobForm = this.formBuilder.group({
       company: [''],
       position: [''],
@@ -31,7 +33,7 @@ export class AddJobsComponent implements OnInit {
   ngOnInit(): void { }
 
   onSubmit(): any {
-    this.apiService.AddJob(this.jobForm.value)
+    this.apiService.AddJob(this.userId,this.jobForm.value)
     .subscribe(() => {
         console.log('Data added successfully!')
         this.ngZone.run(() => this.router.navigateByUrl('/jobs'))
