@@ -13,8 +13,8 @@ import { User } from './user';
 
 export class ApiService {
 
-  USER_API: string = 'user/';
-  JOB_API: string = 'jobs/';
+  USER_API: string = 'http://localhost:9000/user';
+  JOB_API: string = 'http://localhost:9000/jobs';
 
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 
