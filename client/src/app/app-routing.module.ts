@@ -3,32 +3,48 @@ import { RouterModule, Routes } from '@angular/router';
 import { JobsComponent } from './jobs/jobs.component';
 import { JobsDetailsComponent } from './jobs-details/jobs-details.component';
 import { AddJobsComponent } from './add-jobs/add-jobs.component';
-import { EditJobsComponent } from './edit-jobs/edit-jobs.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { AuthGuard } from './auth.gaurd';
 
 const routes: Routes = [
   {
     path: 'jobs',
     component: JobsComponent,
-    data: { title: 'List of Jobs' }
+    canActivate: [AuthGuard]
   },
   {
     path: 'jobs-details/:id',
     component: JobsDetailsComponent,
-    data: { title: 'Jobs Details' }
+    canActivate: [AuthGuard]
   },
   {
     path: 'add-jobs',
     component: AddJobsComponent,
-    data: { title: 'Add Jobs' }
+    canActivate: [AuthGuard]
   },
   {
-    path: 'edit-jobs/:id',
-    component: EditJobsComponent,
-    data: { title: 'Edit Jobs' }
-  },
-  { path: '',
-    redirectTo: 'jobs',
+    path: '',
+    redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: '404',
+    component: NotfoundComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '404'
   }
 ];
 

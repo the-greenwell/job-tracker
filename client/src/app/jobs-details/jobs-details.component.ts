@@ -11,7 +11,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 
 export class JobsDetailsComponent implements OnInit {
 
-  getId: any;
+  userId: any;
+  jobId: any;
   updateForm: FormGroup;
 
   constructor(
@@ -21,9 +22,10 @@ export class JobsDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private apiService: ApiService,
   ) {
-    this.getId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.userId = localStorage.getItem('userId')
+    this.jobId = this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.apiService.GetJob(this.getId).subscribe(res => {
+    this.apiService.GetJob(this.userId, this.jobId).subscribe(res => {
       this.updateForm.setValue({
         company: res['company'],
         position: res['position'],
@@ -47,8 +49,8 @@ export class JobsDetailsComponent implements OnInit {
   ngOnInit() { }
 
   onUpdate(): any {
-    console.log(this.getId, this.updateForm.value)
-    this.apiService.updateJob(this.getId, this.updateForm.value)
+    console.log(this.userId, this.jobId, this.updateForm.value)
+    this.apiService.updateJob(this.userId, this.jobId, this.updateForm.value)
     .subscribe(() => {
       console.log('Data updated succesfully!')
       this.ngZone.run(() => this.router.navigateByUrl('/jobs'))

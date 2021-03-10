@@ -8,13 +8,13 @@
       <thead>
         <tr>
           <th scope="col">Company</th>
-          <th scope="col">Position</th>
+          <th scope="col">Title</th>
           <th scope="col">Status</th>
-          <th scope="col">Posting</th>
+          <th scope="col">Job Post</th>
           <th scope='col'>Notes</th>
           <th scope="col">Date Added</th>
           <th scope="col">Last Updated</th>
-          <th scope="col">Starred</th>
+          <th scope="col">Favorite</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -29,6 +29,7 @@
               </button>
             </div>
             <div class="modal-body">
+              <b class='mb-1'>Notes:</b>
               <p>{{job.notes}}</p>
             </div>
             <div class="modal-footer">
@@ -41,13 +42,13 @@
           <td>{{job.position | titlecase}}</td>
           <td>{{job.status}}</td>
           <td><a href='{{job.link}}'>Link</a></td>
-          <td><i class="notes icon-btn bi bi-chat-left-text-fill"  (click)="openVerticallyCentered(content)"></i></td>
+          <td><i class="notes icon-btn bi bi-chat-left-text-fill"  (click)="openVerticallyCentered(content)" fileExtension=".ttf"></i></td>
           <td>{{job.createdAt | date:'longDate'}}</td>
           <td>{{job.updatedAt | date:'longDate'}}</td>
-          <td><i class="bi" [ngClass]="job.starred?'bi-star-fill star':'bi-star'"></i></td>
+          <td><i class="bi" [ngClass]="job.starred?'bi-star-fill star':'bi-star'" fileExtension=".ttf"></i></td>
           <td>
-            <a class='icon-btn gear' alt='edit' routerLink="/jobs-details/{{job._id}}"><i title='Edit' class="bi bi-gear-fill"></i></a>
-            <a class='icon-btn trash' alt='delete' (click)="delete(job._id, i)"><i title='Delete' class="bi bi-trash-fill"></i></a>
+            <a class='icon-btn gear' alt='edit' routerLink="/jobs-details/{{job._id}}"><i title='Edit' class="bi bi-gear-fill" fileExtension=".ttf"></i></a>
+            <a class='icon-btn trash' alt='delete' (click)="delete(job._id, i)"><i title='Delete' class="bi bi-trash-fill" fileExtension=".ttf"></i></a>
         </tr>
       </tbody>
     </table>
